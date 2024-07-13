@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - release
-      - develop
     tags:
       - 'v*'
   release:
@@ -21,7 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        fetch-depth: 0
+        fetch-depth: 0  # 전체 git 히스토리를 가져옵니다 (poetry-dynamic-versioning에 필요)
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -31,7 +30,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install poetry toml
+        pip install poetry
+        poetry self add "poetry-dynamic-versioning[plugin]"
         poetry install
         poetry add mkdocs mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-i18n mkdocs-minify-plugin
 
