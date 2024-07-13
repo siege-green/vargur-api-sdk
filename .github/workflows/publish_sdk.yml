@@ -33,35 +33,3 @@ jobs:
         pip install wheel twine
         python setup.py sdist bdist_wheel
         twine upload dist/*
-    - name: Set up Git user
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-    - name: Install and configure mkdocs-material
-      run: |
-        pip install mike
-        pip install mkdocs-material
-        pip install mkdocs-git-revision-date-localized-plugin
-        pip install mkdocs-minify-plugin
-        pip install mkdocs-i18n
-    - name: Build and deploy docs
-      run: |
-        mike deploy --push --update-aliases ${{ github.ref_name }} latest
-    - name: Build with Jekyll
-      uses: actions/jekyll-build-pages@v1
-      with:
-        source: ./docs
-        destination: ./_site
-    - name: Generate release notes
-      if: github.event_name == 'release'
-      run: |
-        echo "# What's new in Vargur SDK ${{ github.ref_name }}" > RELEASE_NOTE.md
-        echo "" >> RELEASE_NOTE.md
-        git log --pretty=format:"- %s" $(git describe --tags --abbrev=0 HEAD^)..HEAD >> RELEASE_NOTE.md
-    - name: Update release
-      if: github.event_name == 'release'
-      uses: softprops/action-gh-release@v2
-      with:
-        body_path: RELEASE_NOTE.md
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

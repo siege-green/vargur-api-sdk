@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "vargur_sdk"
-version = "0.1.0"
+name = "vargur-sdk"
+version = "0.1.1"
 description = "EVE ONLINE - Vargur API SDK"
 authors = ["MelonCafe"]
 license = "MIT"
