@@ -1,14 +1,12 @@
 from setuptools import setup, find_packages
-import os
 
-# Read the contents of your README file
 with open('README.md', encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
     name="vargur-sdk",
     version="0.1.2",
-    author="MelonCAfe",
+    author="MelonCafe",
     author_email="contact@siege-green.com",
     description="A powerful SDK for building extensible applications with plugin support",
     long_description=long_description,
@@ -17,11 +15,6 @@ setup(
     packages=find_packages(),
     install_requires=[
         "fastapi",
-        "uvicorn",
-        "sqlalchemy",
-        "aioredis",
-        "pyjwt",
-        "discord.py",
     ],
     extras_require={
         "dev": [
