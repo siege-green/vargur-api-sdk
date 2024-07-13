@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="vargur_sdk",
-    version="0.1.0",
+    name="vargur-sdk",
+    version="0.1.1",
     packages=find_packages(),
     install_requires=[
         "fastapi",
