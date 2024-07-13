@@ -30,10 +30,8 @@ build-backend = "poetry_dynamic_versioning.backend"
 [tool.poetry-dynamic-versioning]
 enable = true
 vcs = "git"
-style = "semver"
+style = "pep440"
 latest-tag = true
-pattern = "(?P<base>\\d+\\.\\d+\\.\\d+)"
-format-jinja = "{% if distance == 0 %}{{ base }}{% else %}{{ base }}.post{{ distance }}+{{ commit }}{% endif %}"
 
 [tool.vargur-sdk]
 custom_domain = "vargur-sdk.siege-green.com"
