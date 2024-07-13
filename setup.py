@@ -6,11 +6,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         "fastapi",
-        "uvicorn",
         "sqlalchemy",
-        "aioredis",
-        "pyjwt",
-        "discord.py",
     ],
     extras_require={
         "dev": [
