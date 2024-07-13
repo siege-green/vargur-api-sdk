@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "vargur_sdk"
+version = "0.1.0"
+description = "EVE ONLINE - Vargur API SDK"
+authors = ["MelonCafe"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.111.0"
+sqlalchemy = "^2.0.31"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

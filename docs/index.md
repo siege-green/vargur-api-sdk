@@ -1,57 +1,48 @@
-# Vargur API SDK
+# Welcome to Vargur API SDK
 
-## Table of Contents
+Vargur API SDK is a powerful tool for developing plugins for the Vargur platform. This documentation will guide you through the process of using the SDK and creating your own plugins.
 
-1. [Home](index.md)
-   - Welcome to Vargur API SDK
-   - Quick Start
-   - Features
-   - Support
+## Quick Start
 
-2. [User Guide](user-guide.md)
-   - Creating a Plugin
-   - Using the Cache
-   - Working with the Database
+To get started with Vargur API SDK, follow these steps:
 
-3. [API Reference](api-reference.md)
-   - Core Components
-     - Plugin
-     - Config
-     - Database
-     - Cache
-     - Event Bus
-     - Authentication
-   - Utility Functions
+1. Install the SDK: `pip install vargur-sdk`
+2. Import the necessary components in your code:
 
-4. [Plugin Guidelines](plugin-guidelines.md)
-   - Plugin Structure
-   - Best Practices
-   - Integration with Core SDK
+```python
+from vargur_sdk import Plugin, router, task
+```
 
-5. [Configuration](config.md)
-   - Environment Variables
-   - Default Settings
-   - Overriding Configurations
+3. Create your plugin class:
 
-6. [Examples](examples.md)
-   - Basic Plugin
-   - Database Integration
-   - Caching Example
-   - Event-driven Plugin
+```python
+class MyPlugin(Plugin):
+    def __init__(self):
+        super().__init__()
 
-7. [Troubleshooting](troubleshooting.md)
-   - Common Issues
-   - Debugging Tips
-   - Getting Help
+    @task
+    async def my_background_task(self):
+        # Your background task logic here
+        pass
 
-8. [Changelog](changelog.md)
-   - Version History
-   - Latest Updates
+@router.get("/my-endpoint")
+async def my_endpoint():
+    # Your endpoint logic here
+    return {"message": "Hello from my plugin!"}
+```
 
-9. [Contributing](contributing.md)
-   - How to Contribute
-   - Development Setup
-   - Submitting Pull Requests
+4. Use the plugin in your Vargur application
 
-10. [License](license.md)
-    - MIT License Details
+For more detailed information, please refer to the [User Guide](user-guide.md) and [API Reference](api-reference.md).
+
+## Features
+
+- Easy-to-use plugin system
+- Background task support
+- Built-in caching and event system
+- Database integration
+- Multi-language support
+
+## Support
+
+If you encounter any issues or have questions, please check our [GitHub Issues](https://github.com/vargur/vargur-sdk/issues) page or contact our support team.
