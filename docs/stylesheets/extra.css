@@ -1,0 +1,21 @@
+
+.md-version {
+    display: flex;
+    flex-direction: column;
+    margin: .5rem 0;
+    padding: 0 .8rem;
+}
+
+.md-version label {
+    font-size: .65rem;
+    opacity: .7;
+}
+
+.md-version select {
+    background-color: var(--md-default-bg-color);
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 4px;
+    color: var(--md-default-fg-color);
+    font-size: .7rem;
+    padding: .2rem .4rem;
+}
