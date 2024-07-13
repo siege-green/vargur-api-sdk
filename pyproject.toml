@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vargur-sdk"
-version = "0.1.2"
+version = "0.0.0"
 description = "EVE ONLINE - Vargur API SDK"
 authors = ["MelonCafe"]
 license = "MIT"
@@ -11,7 +11,14 @@ python = "^3.11"
 fastapi = "^0.111.0"
 sqlalchemy = "^2.0.31"
 
+[tool.poetry.group.dev.dependencies]
+poetry-dynamic-versioning = "^1.4.0"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs = "git"
+style = "semver"
