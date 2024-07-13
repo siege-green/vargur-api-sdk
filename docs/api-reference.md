@@ -35,101 +35,78 @@ class Config:
 
 ### Database
 
-The database module provides functions for database operations.
+The database module provides a mock function for database operations.
 
 #### Functions
 
-- `get_db()`: Async generator that yields a database session.
+- `get_db()`: Async generator that yields a mock database session.
 
 ```python
 async def get_db():
-    async with AsyncSessionLocal() as session:
-        yield session
+    # Mock implementation
+    yield AsyncSession()
 ```
 
 ### Cache
 
-The `Cache` class provides methods for interacting with the Redis cache.
+The `Cache` class provides mock methods for interacting with a cache.
 
 ```python
 class Cache:
-    def __init__(self):
-        self.redis = aioredis.from_url(config.CACHE_URL)
-
     async def get(self, key: str):
-        return await self.redis.get(key)
+        # Mock implementation
+        return None
 
     async def set(self, key: str, value: str, expire: int = None):
-        await self.redis.set(key, value, ex=expire)
+        # Mock implementation
+        pass
 
     async def delete(self, key: str):
-        await self.redis.delete(key)
+        # Mock implementation
+        pass
 ```
 
 ### Event Bus
 
-The `EventBus` class provides methods for publishing and subscribing to events.
+The `EventBus` class provides mock methods for publishing and subscribing to events.
 
 ```python
 class EventBus:
-    def __init__(self):
-        self.subscribers: Dict[str, List[Callable]] = {}
-
-    def subscribe(self, event: str, callback: Callable):
-        if event not in self.subscribers:
-            self.subscribers[event] = []
-        self.subscribers[event].append(callback)
+    def subscribe(self, event: str, callback):
+        # Mock implementation
+        pass
 
     async def publish(self, event: str, **kwargs):
-        if event in self.subscribers:
-            for callback in self.subscribers[event]:
-                if asyncio.iscoroutinefunction(callback):
-                    await callback(**kwargs)
-                else:
-                    callback(**kwargs)
+        # Mock implementation
+        pass
 ```
 
 ### Authentication
 
-The authentication module provides functions for user authentication.
+The authentication module provides a mock function for user authentication.
 
 #### Functions
 
-- `get_current_user(token: str, db: AsyncSession)`: Authenticates a user based on their JWT token.
+- `get_current_user(token: str)`: Returns a mock authenticated user.
 
 ```python
-async def get_current_user(token: str = Depends(oauth2_scheme), db: AsyncSession = Depends(get_db)):
-    try:
-        payload = jwt.decode(token, config.SECRET_KEY, algorithms=["HS256"])
-        user_id: int = payload.get("sub")
-        if user_id is None:
-            raise HTTPException(status_code=401, detail="Invalid authentication credentials")
-    except jwt.PyJWTError:
-        raise HTTPException(status_code=401, detail="Invalid authentication credentials")
-
-    result = await db.execute(select(User).filter(User.id == user_id))
-    user = result.scalar_one_or_none()
-    if user is None:
-        raise HTTPException(status_code=401, detail="User not found")
-    return user
+async def get_current_user(token: str = Depends(lambda: "mock-token")):
+    # Mock implementation
+    return {"id": 1, "username": "mock_user"}
 ```
 
 ## Utility Functions
 
-### create_access_token
+### load_plugins
 
-Creates a JWT access token for a user.
+Loads all available plugins.
 
 ```python
-def create_access_token(data: dict, expires_delta: timedelta = None):
-    to_encode = data.copy()
-    if expires_delta:
-        expire = datetime.utcnow() + expires_delta
-    else:
-        expire = datetime.utcnow() + timedelta(minutes=15)
-    to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, config.SECRET_KEY, algorithm="HS256")
-    return encoded_jwt
+def load_plugins():
+    # Mock implementation
+    return {}
 ```
+
+Note: All these components and functions are currently mock implementations. They provide the structure and interface of the SDK but do not perform actual operations. When using this SDK, you may need to replace these mock implementations with actual functionality based on your specific requirements.
 
 For more detailed information about using these components and functions, please refer to the [User Guide](user-guide.md).

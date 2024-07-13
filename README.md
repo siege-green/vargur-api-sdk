@@ -5,11 +5,8 @@ Vargur SDK is a powerful toolkit for building extensible applications with plugi
 ## Features
 
 - Plugin system for easy extensibility
-- Database integration with SQLAlchemy
-- Redis-based caching
-- Event bus for inter-plugin communication
-- JWT-based authentication
-- Discord integration plugin
+- Mock implementations for database integration, caching, event bus, and authentication
+- Minimal dependencies for flexibility in implementation
 
 ## Installation
 
@@ -25,44 +22,9 @@ Here's a basic example of how to use Vargur SDK:
 
 ```python
 from fastapi import FastAPI
-from vargur_sdk import load_plugins, event_bus
+from vargur_sdk import Plugin, load_plugins, event_bus
 
 app = FastAPI()
-
-# Load all plugins
-plugins = load_plugins()
-
-# Include plugin routers
-for plugin in plugins.values():
-    app.include_router(plugin.router)
-
-# Example of using the event bus
-@app.post("/update_user_groups")
-async def update_user_groups(user_id: int, groups: List[str]):
-    await event_bus.publish("user_groups_changed", user_id=user_id)
-    return {"message": "User groups updated successfully"}
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
-```
-
-## Creating Plugins
-
-To create a plugin, create a new directory in the `plugins` folder with the following structure:
-
-```
-plugins/
-└── my_plugin/
-    ├── __init__.py
-    ├── main.py
-    └── models.py
-```
-
-In `main.py`, define your plugin class:
-
-```python
-from vargur_sdk import Plugin
 
 class MyPlugin(Plugin):
     def __init__(self):
@@ -72,20 +34,54 @@ class MyPlugin(Plugin):
     async def hello(self):
         return {"message": "Hello from my plugin!"}
 
-plugin = MyPlugin()
+# Load all plugins
+plugins = load_plugins()
+plugins["my_plugin"] = MyPlugin()
+
+# Include plugin routers
+for plugin in plugins.values():
+    app.include_router(plugin.router)
+
+# Example of using the event bus
+@app.post("/trigger_event")
+async def trigger_event():
+    await event_bus.publish("some_event", data="Some data")
+    return {"message": "Event triggered"}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 ```
+
+## Components
+
+- **Plugin**: Base class for creating plugins
+- **Config**: Configuration settings for the SDK
+- **Database**: Mock database session provider
+- **Cache**: Mock caching implementation
+- **EventBus**: Mock event publishing and subscribing system
+- **Authentication**: Mock user authentication
 
 ## Configuration
 
-Vargur SDK uses environment variables for configuration. Here are the available options:
+Vargur SDK uses a `Config` class for configuration. You can modify these settings in your application:
 
-- `VARGUR_DEBUG`: Enable debug mode (default: False)
-- `VARGUR_LOG_LEVEL`: Logging level (default: INFO)
-- `VARGUR_DATABASE_URL`: Database URL (default: sqlite:///./test.db)
-- `VARGUR_CACHE_URL`: Redis cache URL (default: redis://localhost)
-- `VARGUR_SECRET_KEY`: Secret key for JWT encoding
-- `VARGUR_DISCORD_BOT_TOKEN`: Discord bot token
-- `VARGUR_DISCORD_GUILD_ID`: Discord guild ID
+```python
+from vargur_sdk import config
+
+config.DEBUG = True
+config.LOG_LEVEL = "DEBUG"
+config.DATABASE_URL = "your_database_url"
+config.SECRET_KEY = "your_secret_key"
+```
+
+## Documentation
+
+For more detailed information, please refer to the following documentation:
+
+- [User Guide](https://meloncafe.github.io/vargur-sdk/user-guide)
+- [API Reference](https://meloncafe.github.io/vargur-sdk/api-reference)
+- [Plugin Guidelines](https://meloncafe.github.io/vargur-sdk/plugin-guidelines)
 
 ## Contributing
 
@@ -93,4 +89,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
