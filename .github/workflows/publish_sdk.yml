@@ -39,13 +39,17 @@ jobs:
     - name: Check and set version
       run: |
         git fetch --tags
-        LATEST_TAG=$(git describe --tags --abbrev=0)
-        CURRENT_VERSION=$(poetry version --short)
-        echo "Latest tag: $LATEST_TAG"
-        echo "Current version: $CURRENT_VERSION"
-        if [ "$CURRENT_VERSION" != "${LATEST_TAG#v}" ]; then
-          poetry version ${LATEST_TAG#v}
-          echo "Version updated to: $(poetry version --short)"
+        LATEST_TAG=$(git describe --tags --abbrev=0 --match "v*" 2>/dev/null || echo "")
+        if [ -n "$LATEST_TAG" ]; then
+          CURRENT_VERSION=$(poetry version --short)
+          echo "Latest tag: $LATEST_TAG"
+          echo "Current version: $CURRENT_VERSION"
+          if [ "$CURRENT_VERSION" != "${LATEST_TAG#v}" ]; then
+            poetry version ${LATEST_TAG#v}
+            echo "Version updated to: $(poetry version --short)"
+          fi
+        else
+          echo "No valid version tag found. Using current version."
         fi
 
     - name: Build and verify package
