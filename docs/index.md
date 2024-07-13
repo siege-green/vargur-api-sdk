@@ -45,4 +45,4 @@ For more detailed information, please refer to the [User Guide](user-guide.md) a
 
 ## Support
 
-If you encounter any issues or have questions, please check our [GitHub Issues](https://github.com/vargur/vargur-sdk/issues) page or contact our support team.
+If you encounter any issues or have questions, please check our [GitHub Issues](https://github.com/meloncafe/vargur-sdk/issues) page or contact our support team.
