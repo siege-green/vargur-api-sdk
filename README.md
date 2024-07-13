@@ -13,7 +13,7 @@ Vargur SDK is a powerful toolkit for building extensible applications with plugi
 You can install Vargur SDK using pip:
 
 ```
-pip install vargur_sdk
+pip install vargur-sdk
 ```
 
 ## Usage
