@@ -6,7 +6,7 @@ This page provides detailed information about the key components and functions o
 
 ### Plugin
 
-The `Plugin` class is the base class for all plugins in the Vargur SDK.
+The `Plugin` class is the base class for all plugins in the Vargur API SDK.
 
 ```python
 class Plugin:
@@ -21,7 +21,7 @@ class Plugin:
 
 ### Config
 
-The `Config` class holds configuration settings for the Vargur SDK.
+The `Config` class holds configuration settings for the Vargur API SDK.
 
 ```python
 class Config:

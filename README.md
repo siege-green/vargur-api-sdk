@@ -1,6 +1,6 @@
-# Vargur SDK
+# Vargur API SDK
 
-Vargur SDK is a powerful toolkit for building extensible applications with plugin support. It provides a core set of features including database integration, caching, event bus, and authentication, along with a plugin system that allows easy extension of functionality.
+Vargur API SDK is a powerful toolkit for building extensible applications with plugin support. It provides a core set of features including database integration, caching, event bus, and authentication, along with a plugin system that allows easy extension of functionality.
 
 ## Features
 
@@ -10,15 +10,15 @@ Vargur SDK is a powerful toolkit for building extensible applications with plugi
 
 ## Installation
 
-You can install Vargur SDK using pip:
+You can install Vargur API SDK using pip:
 
 ```
-pip install vargur-sdk
+pip install vargur-api-sdk
 ```
 
 ## Usage
 
-Here's a basic example of how to use Vargur SDK:
+Here's a basic example of how to use Vargur API SDK:
 
 ```python
 from fastapi import FastAPI
@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
 ## Configuration
 
-Vargur SDK uses a `Config` class for configuration. You can modify these settings in your application:
+Vargur API SDK uses a `Config` class for configuration. You can modify these settings in your application:
 
 ```python
 from vargur_sdk import config
@@ -79,9 +79,9 @@ config.SECRET_KEY = "your_secret_key"
 
 For more detailed information, please refer to the following documentation:
 
-- [User Guide](https://meloncafe.github.io/vargur-sdk/user-guide)
-- [API Reference](https://meloncafe.github.io/vargur-sdk/api-reference)
-- [Plugin Guidelines](https://meloncafe.github.io/vargur-sdk/plugin-guidelines)
+- [User Guide](https://meloncafe.github.io/vargur-api-sdk/user-guide)
+- [API Reference](https://meloncafe.github.io/vargur-api-sdk/api-reference)
+- [Plugin Guidelines](https://meloncafe.github.io/vargur-api-sdk/plugin-guidelines)
 
 ## Contributing
 

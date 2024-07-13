@@ -1,4 +1,4 @@
-from fastapi import Depends, HTTPException
+from fastapi import Depends
 
 
 async def get_current_user(token: str = Depends(lambda: "mock-token")):

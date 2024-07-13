@@ -14,11 +14,11 @@ Vargur API SDK is a powerful toolkit for building extensible applications with p
 
 ## Getting Started
 
-To get started with Vargur SDK, follow these simple steps:
+To get started with Vargur API SDK, follow these simple steps:
 
 1. Install the SDK:
    ```
-   pip install vargur-sdk
+   pip install vargur-api-sdk
    ```
 
 2. Import the necessary components:
@@ -55,12 +55,12 @@ For detailed information about the SDK's components and functions, see the [API 
 
 ## Creating Plugins
 
-If you're interested in creating plugins for the Vargur SDK, don't miss our [Plugin Guidelines](plugin-guidelines.md). This guide provides best practices and detailed instructions on how to structure and implement your plugins.
+If you're interested in creating plugins for the Vargur API SDK, don't miss our [Plugin Guidelines](plugin-guidelines.md). This guide provides best practices and detailed instructions on how to structure and implement your plugins.
 
 ## Contributing
 
-Contributions to the Vargur SDK are welcome! Whether it's improving documentation, adding new features, or reporting bugs, your help is appreciated. Please see our contributing guidelines for more information on how to get started.
+Contributions to the Vargur API SDK are welcome! Whether it's improving documentation, adding new features, or reporting bugs, your help is appreciated. Please see our contributing guidelines for more information on how to get started.
 
 ## License
 
-Vargur SDK is released under the [MIT License](LICENSE).
+Vargur API SDK is released under the [MIT License](LICENSE).

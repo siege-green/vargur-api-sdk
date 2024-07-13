@@ -13,15 +13,15 @@ This guide will walk you through the process of using the Vargur API SDK to crea
 
 ## Installation
 
-To install Vargur SDK, use pip:
+To install Vargur API SDK, use pip:
 
 ```
-pip install vargur_sdk
+pip install vargur-api-sdk
 ```
 
 ## Basic Usage
 
-Here's a basic example of how to use Vargur SDK:
+Here's a basic example of how to use Vargur API SDK:
 
 ```python
 from fastapi import FastAPI
@@ -52,7 +52,7 @@ if __name__ == "__main__":
 To create a plugin:
 
 1. Create a new Python file for your plugin.
-2. Import the necessary components from the Vargur SDK:
+2. Import the necessary components from the Vargur API SDK:
 
 ```python
 from vargur_sdk import Plugin, router
@@ -72,7 +72,7 @@ class MyPlugin(Plugin):
 
 ## Using SDK Components
 
-Vargur SDK provides several mock components that you can use in your plugins:
+Vargur API SDK provides several mock components that you can use in your plugins:
 
 - **Config**: Access configuration settings
 - **Database**: Perform database operations (mock)

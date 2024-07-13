@@ -1,4 +1,4 @@
-name: Publish Vargur SDK and Docs
+name: Publish Vargur API SDK and Docs
 
 on:
   push:
@@ -77,4 +77,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./site
         force_orphan: true
-        cname: vargur-sdk.siege-green.com
+        cname: vargur-api-sdk.siege-green.com
