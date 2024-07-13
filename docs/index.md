@@ -18,7 +18,7 @@ To get started with Vargur SDK, follow these simple steps:
 
 1. Install the SDK:
    ```
-   pip install vargur_sdk
+   pip install vargur-sdk
    ```
 
 2. Import the necessary components:
