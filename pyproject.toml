@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vargur-sdk"
-version = "0.0.0"  # This will be ignored and replaced by poetry-dynamic-versioning
+version = "0.0.0"
 description = "EVE ONLINE - Vargur API SDK"
 authors = ["MelonCafe <contact@siege0green.com>"]
 license = "MIT"
@@ -31,11 +31,9 @@ build-backend = "poetry_dynamic_versioning.backend"
 enable = true
 vcs = "git"
 style = "semver"
-pattern = "^(?P<base>\\d+\\.\\d+\\.\\d+)$"
-format = "{base}"
-bump = true
-strict = false
-dirty = false
+latest-tag = true
+pattern = "(?P<base>\\d+\\.\\d+\\.\\d+)"
+format-jinja = "{% if distance == 0 %}{{ base }}{% else %}{{ base }}.post{{ distance }}+{{ commit }}{% endif %}"
 
 [tool.vargur-sdk]
 custom_domain = "vargur-sdk.siege-green.com"
