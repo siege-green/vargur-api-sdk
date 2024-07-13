@@ -20,7 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # 전체 git 히스토리를 가져옵니다 (poetry-dynamic-versioning에 필요)
+        fetch-depth: 0
 
     - name: Set up Python
       uses: actions/setup-python@v5
