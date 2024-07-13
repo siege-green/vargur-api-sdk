@@ -47,6 +47,11 @@ jobs:
     - name: Build and deploy docs
       run: |
         mike deploy --push --update-aliases ${{ github.ref_name }} latest
+    - name: Build with Jekyll
+      uses: actions/jekyll-build-pages@v1
+      with:
+        source: ./docs
+        destination: ./_site
     - name: Generate release notes
       if: github.event_name == 'release'
       run: |
