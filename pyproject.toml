@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vargur-sdk"
-version = "0.0.0"
+version = "0.0.0"  # This will be ignored and replaced by poetry-dynamic-versioning
 description = "EVE ONLINE - Vargur API SDK"
 authors = ["MelonCafe <contact@siege0green.com>"]
 license = "MIT"
@@ -34,7 +34,7 @@ style = "semver"
 pattern = "^(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)$"
 format = "{major}.{minor}.{patch}"
 bump = "patch"
-strict = true
+strict = false
 dirty = false
 metadata = false
 version-file = "vargur_sdk/__init__.py"

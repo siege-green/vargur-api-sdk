@@ -21,7 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        fetch-depth: 0
+        fetch-depth: 0  # Needed for poetry-dynamic-versioning to work correctly
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -51,10 +51,9 @@ jobs:
         poetry config pypi-token.pypi $PYPI_PASSWORD
         poetry publish
 
-    - name: Build MkDocs documentation and generate CNAME
+    - name: Build MkDocs documentation
       run: |
         poetry run mkdocs build --site-dir ./site
-        python -c "import toml; config = toml.load('pyproject.toml'); domain = config['tool']['vargur-sdk']['custom_domain']; open('./site/CNAME', 'w').write(domain)"
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
