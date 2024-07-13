@@ -47,20 +47,9 @@ jobs:
       run: |
         mkdocs build --site-dir ./site
 
-    - name: Deploy MkDocs to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./site
-
-    - name: Build Jekyll documentation
-      uses: actions/jekyll-build-pages@v1
-      with:
-        source: ./docs
-        destination: ./jekyll_site
-
-    - name: Deploy Jekyll to GitHub Pages
+    - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./jekyll_site
+        publish_dir: ./site
+        force_orphan: true
