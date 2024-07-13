@@ -21,7 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # Needed for poetry-dynamic-versioning to work correctly
+        fetch-depth: 0
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -36,10 +36,17 @@ jobs:
         poetry install
         poetry add mkdocs mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-i18n mkdocs-minify-plugin
 
-    - name: Check version
+    - name: Check and set version
       run: |
-        echo "Current version: $(poetry version --short)"
-        echo "Latest tag: $(git describe --tags --abbrev=0)"
+        git fetch --tags
+        LATEST_TAG=$(git describe --tags --abbrev=0)
+        CURRENT_VERSION=$(poetry version --short)
+        echo "Latest tag: $LATEST_TAG"
+        echo "Current version: $CURRENT_VERSION"
+        if [ "$CURRENT_VERSION" != "${LATEST_TAG#v}" ]; then
+          poetry version ${LATEST_TAG#v}
+          echo "Version updated to: $(poetry version --short)"
+        fi
 
     - name: Build and verify package
       run: |
