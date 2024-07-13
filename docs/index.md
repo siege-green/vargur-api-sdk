@@ -23,7 +23,7 @@ To get started with Vargur API SDK, follow these simple steps:
 
 2. Import the necessary components:
    ```python
-   from vargur_sdk import Plugin, load_plugins, event_bus
+   from vargur_api_sdk import Plugin, load_plugins, event_bus
    ```
 
 3. Create your first plugin:

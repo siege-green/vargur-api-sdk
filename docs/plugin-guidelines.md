@@ -36,10 +36,10 @@ my_plugin/
 To create a plugin, follow these steps:
 
 1. Create a new directory for your plugin.
-2. Create a `main.py` file with a class that inherits from `vargur_sdk.Plugin`:
+2. Create a `main.py` file with a class that inherits from `vargur_api_sdk.Plugin`:
 
 ```python
-from vargur_sdk import Plugin
+from vargur_api_sdk import Plugin
 
 class MyPlugin(Plugin):
     def __init__(self):
@@ -84,7 +84,7 @@ Vargur API SDK provides several components that you can use in your plugins:
 Example usage:
 
 ```python
-from vargur_sdk import config, get_db, cache, event_bus, get_current_user
+from vargur_api_sdk import config, get_db, cache, event_bus, get_current_user
 
 class MyPlugin(Plugin):
     def __init__(self):
