@@ -36,6 +36,11 @@ jobs:
         poetry install
         poetry add mkdocs mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-i18n mkdocs-minify-plugin
 
+    - name: Check version
+      run: |
+        echo "Current version: $(poetry version --short)"
+        echo "Latest tag: $(git describe --tags --abbrev=0)"
+
     - name: Build and verify package
       run: |
         poetry build

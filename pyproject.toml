@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vargur-sdk"
-version = "0.0.0"
+version = "0.0.0"  # This will be ignored and replaced by poetry-dynamic-versioning
 description = "EVE ONLINE - Vargur API SDK"
 authors = ["MelonCafe <contact@siege0green.com>"]
 license = "MIT"
@@ -36,7 +36,6 @@ format = "{base}"
 bump = true
 strict = false
 dirty = false
-metadata = false
 
 [tool.vargur-sdk]
 custom_domain = "vargur-sdk.siege-green.com"
