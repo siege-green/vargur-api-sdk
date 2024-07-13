@@ -2,17 +2,26 @@
 name = "vargur-sdk"
 version = "0.0.0"
 description = "EVE ONLINE - Vargur API SDK"
-authors = ["MelonCafe"]
+authors = ["MelonCafe <contact@siege-green.com>"]
 license = "MIT"
 readme = "README.md"
+homepage = "https://github.com/meloncafe/vargur-sdk"
+repository = "https://github.com/meloncafe/vargur-sdk"
+documentation = "https://vargur-sdk.siege-green.com"
+keywords = ["eve online", "sdk", "api"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = "^0.111.0"
 sqlalchemy = "^2.0.31"
-
-[tool.poetry.group.dev.dependencies]
-poetry-dynamic-versioning = "^1.4.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
@@ -22,3 +31,6 @@ build-backend = "poetry_dynamic_versioning.backend"
 enable = true
 vcs = "git"
 style = "semver"
+
+[tool.vargur-sdk]
+custom_domain = "vargur-sdk.siege-green.com"

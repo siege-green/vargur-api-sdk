@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - release
-      - develop
     tags:
       - 'v*'
   release:
@@ -31,29 +30,29 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install poetry
+        pip install poetry toml
         poetry install
         poetry add mkdocs mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-i18n mkdocs-minify-plugin
 
-    - name: Build and publish to PyPI
+    - name: Build and verify package
+      run: |
+        poetry build
+        pip install twine
+        twine check dist/*
+
+    - name: Publish to PyPI
       if: github.event_name == 'release'
       env:
         PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
         PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
         poetry config pypi-token.pypi $PYPI_PASSWORD
-        poetry build
         poetry publish
 
-    - name: Build MkDocs documentation
+    - name: Build MkDocs documentation and generate CNAME
       run: |
         poetry run mkdocs build --site-dir ./site
-
-    - name: Preserve CNAME
-      run: |
-        if [ -f "CNAME" ]; then
-          cp CNAME ./site/
-        fi
+        python -c "import toml; config = toml.load('pyproject.toml'); domain = config['tool']['vargur-sdk']['custom_domain']; open('./site/CNAME', 'w').write(domain)"
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
@@ -61,4 +60,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./site
         force_orphan: true
-        cname: ${{ secrets.CUSTOM_DOMAIN }}
+        cname: vargur-sdk.siege-green.com
