@@ -3,7 +3,7 @@ name: Publish Vargur SDK and Docs
 on:
   push:
     branches:
-      - main
+      - release
     tags:
       - 'v*'
   release:
@@ -24,6 +24,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -e .
+        pip install mkdocs mkdocs-material
     - name: Build and publish to PyPI
       if: github.event_name == 'release'
       env:
@@ -33,3 +34,21 @@ jobs:
         pip install wheel twine
         python setup.py sdist bdist_wheel
         twine upload dist/*
+    - name: Build MkDocs documentation
+      run: mkdocs build
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./site
+    - name: Build Jekyll documentation
+      uses: actions/jekyll-build-pages@v1
+      with:
+        source: ./docs
+        destination: ./_site
+    - name: Upload Jekyll artifact
+      uses: actions/upload-pages-artifact@v3
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
