@@ -16,19 +16,23 @@ permissions:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -e .
-        pip install mkdocs mkdocs-material
+        pip install mkdocs mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-i18n mkdocs-minify-plugin
+
     - name: Build and publish to PyPI
       if: github.event_name == 'release'
       env:
@@ -38,23 +42,25 @@ jobs:
         pip install wheel twine
         python setup.py sdist bdist_wheel
         twine upload dist/*
+
     - name: Build MkDocs documentation
       run: |
-        pip install mkdocs mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-i18n mkdocs-minify-plugin
-        mkdocs build
-    - name: Deploy to GitHub Pages
+        mkdocs build --site-dir ./site
+
+    - name: Deploy MkDocs to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./site
+
     - name: Build Jekyll documentation
       uses: actions/jekyll-build-pages@v1
       with:
         source: ./docs
-        destination: ./_site
-    - name: Upload Jekyll artifact
-      uses: actions/upload-pages-artifact@v3
-    - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v2
+        destination: ./jekyll_site
+
+    - name: Deploy Jekyll to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./jekyll_site
