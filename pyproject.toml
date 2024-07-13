@@ -31,13 +31,12 @@ build-backend = "poetry_dynamic_versioning.backend"
 enable = true
 vcs = "git"
 style = "semver"
-pattern = "^(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)$"
-format = "{major}.{minor}.{patch}"
-bump = "patch"
-strict = true
+pattern = "^(?P<base>\\d+\\.\\d+\\.\\d+)$"
+format = "{base}"
+bump = true
+strict = false
 dirty = false
 metadata = false
-version-file = "vargur_sdk/__init__.py"
 
 [tool.vargur-sdk]
 custom_domain = "vargur-sdk.siege-green.com"
