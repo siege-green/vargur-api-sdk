@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "vargur-sdk"
+name = "vargur-api-sdk"
 version = "0.0.0"
 description = "EVE ONLINE - Vargur API SDK"
 authors = ["MelonCafe <contact@siege0green.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/meloncafe/vargur-sdk"
-repository = "https://github.com/meloncafe/vargur-sdk"
-documentation = "https://vargur-sdk.siege-green.com"
+homepage = "https://github.com/meloncafe/vargur-api-sdk"
+repository = "https://github.com/meloncafe/vargur-api-sdk"
+documentation = "https://vargur-api-sdk.siege-green.com"
 keywords = ["eve online", "sdk", "api"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -33,5 +33,5 @@ vcs = "git"
 style = "pep440"
 latest-tag = true
 
-[tool.vargur-sdk]
-custom_domain = "vargur-sdk.siege-green.com"
+[tool.vargur-api-sdk]
+custom_domain = "vargur-api-sdk.siege-green.com"

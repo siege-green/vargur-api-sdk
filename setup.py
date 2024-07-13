@@ -17,14 +17,14 @@ version = get_version()
 
 
 setup(
-    name="vargur-sdk",
+    name="vargur-api-sdk",
     version="0.1.3",
     author="MelonCafe",
     author_email="contact@siege-green.com",
     description="A powerful SDK for building extensible applications with plugin support",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/meloncafe/vargur-sdk",
+    url="https://github.com/meloncafe/vargur-api-sdk",
     packages=find_packages(),
     install_requires=[
         "fastapi",
@@ -45,8 +45,8 @@ setup(
     ],
     python_requires='>=3.11',
     project_urls={
-        "Bug Tracker": "https://github.com/meloncafe/vargur-sdk/issues",
-        "Documentation": "https://vargur-sdk.siege-green.com/",
-        "Source Code": "https://github.com/meloncafe/vargur-sdk",
+        "Bug Tracker": "https://github.com/meloncafe/vargur-api-sdk/issues",
+        "Documentation": "https://vargur-api-sdk.siege-green.com/",
+        "Source Code": "https://github.com/meloncafe/vargur-api-sdk",
     },
 )

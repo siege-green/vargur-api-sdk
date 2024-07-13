@@ -1,6 +1,6 @@
-# Plugin Guidelines for Vargur SDK
+# Plugin Guidelines for Vargur API SDK
 
-This guide provides instructions and best practices for creating plugins using the Vargur SDK.
+This guide provides instructions and best practices for creating plugins using the Vargur API SDK.
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ This guide provides instructions and best practices for creating plugins using t
 
 ## Plugin Structure
 
-A typical plugin structure in Vargur SDK looks like this:
+A typical plugin structure in Vargur API SDK looks like this:
 
 ```
 my_plugin/
@@ -36,10 +36,10 @@ my_plugin/
 To create a plugin, follow these steps:
 
 1. Create a new directory for your plugin.
-2. Create a `main.py` file with a class that inherits from `vargur_sdk.Plugin`:
+2. Create a `main.py` file with a class that inherits from `vargur_api_sdk.Plugin`:
 
 ```python
-from vargur_sdk import Plugin
+from vargur_api_sdk import Plugin
 
 class MyPlugin(Plugin):
     def __init__(self):
@@ -73,7 +73,7 @@ class MyPlugin(Plugin):
 
 ## Using SDK Components
 
-Vargur SDK provides several components that you can use in your plugins:
+Vargur API SDK provides several components that you can use in your plugins:
 
 - **Config**: Access configuration settings
 - **Database**: Perform database operations
@@ -84,7 +84,7 @@ Vargur SDK provides several components that you can use in your plugins:
 Example usage:
 
 ```python
-from vargur_sdk import config, get_db, cache, event_bus, get_current_user
+from vargur_api_sdk import config, get_db, cache, event_bus, get_current_user
 
 class MyPlugin(Plugin):
     def __init__(self):
@@ -108,13 +108,13 @@ class MyPlugin(Plugin):
 
 ## Integration with Core SDK
 
-When integrating your plugin with the core Vargur SDK:
+When integrating your plugin with the core Vargur API SDK:
 
 1. Use the provided abstract base classes and interfaces.
 2. Conform to the SDK's naming conventions and coding style.
 3. Utilize the SDK's built-in components (e.g., event bus, caching) when appropriate.
 4. Ensure your plugin doesn't interfere with other plugins or the core SDK functionality.
 
-Remember, the current implementation of Vargur SDK uses mock objects. When developing your plugin, you may need to replace these with actual implementations or extend the mock objects based on your specific requirements.
+Remember, the current implementation of Vargur API SDK uses mock objects. When developing your plugin, you may need to replace these with actual implementations or extend the mock objects based on your specific requirements.
 
 For more detailed information about the SDK components and their usage, refer to the [API Reference](api-reference.md).
