@@ -79,9 +79,9 @@ config.SECRET_KEY = "your_secret_key"
 
 For more detailed information, please refer to the following documentation:
 
-- [User Guide](https://meloncafe.github.io/vargur-api-sdk/user-guide)
-- [API Reference](https://meloncafe.github.io/vargur-api-sdk/api-reference)
-- [Plugin Guidelines](https://meloncafe.github.io/vargur-api-sdk/plugin-guidelines)
+- [User Guide](https://vargur-api-sdk.siege-green.com/user-guide)
+- [API Reference](https://vargur-api-sdk.siege-green.com/api-reference)
+- [Plugin Guidelines](https://vargur-api-sdk.siege-green.com/plugin-guidelines)
 
 ## Contributing
 
